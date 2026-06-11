@@ -12,7 +12,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/sis414g2react">
       <Header />
       <NavBar />
       <Footer />
