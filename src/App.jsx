@@ -1,20 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
-import { BrowserRouter } from 'react-router-dom'
+import Sidebar from './components/Sidebar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import Entidad from './pages/Entidad'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <BrowserRouter basename="/sis414g2react">
       <Header />
-      <NavBar />
+
+      <div className="app-layout">
+        <Sidebar />
+
+        <main className="main-content">
+          <NavBar />
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/entidad" element={<Entidad />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </main>
+      </div>
+
       <Footer />
     </BrowserRouter>
   )
