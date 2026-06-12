@@ -1,20 +1,12 @@
-import { Link, Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
-import About from "../pages/About";
+import { Link } from "react-router-dom";
 
 function NavBar() {
     return (
-    <>
-      <nav>
-        <Link to="/">Home</Link> |{" "}
+      <nav className="top-nav">
+        <Link to="/">Home</Link> | {" "}
+        <Link to="/entidad">Entidad</Link> | {" "}
         <Link to="/about">About</Link>
       </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </>          
     );
 }
 
