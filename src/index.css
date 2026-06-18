@@ -1,111 +1,122 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #c0c0c0;
+  font-size: 13px;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+.wrapper {
+  max-width: 900px;
+  margin: 20px auto;
+  border: 2px solid #555;
+  background: #fff;
+}
+
+.header {
+  background: linear-gradient(180deg, #1a4a7a 0%, #2e6db4 50%, #1a4a7a 100%);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #0d2e52;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.flag {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+  width: 36px;
+  height: 24px;
+  border: 1px solid #aaa;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.flag span { flex: 1; display: block; }
+.flag .r { background: #d52b1e; }
+.flag .y { background: #f9e300; }
+.flag .g { background: #007a3d; }
+
+.brand h1 {
+  color: #fff;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  font-style: italic;
+  text-shadow: 1px 1px 3px #000;
+}
+.brand p {
+  color: #c8dff5;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+.header-right {
+  color: #c8dff5;
+  font-size: 0.8rem;
+  text-align: right;
+}
+.header-right strong { color: #fff; }
+
+.main {
+  display: flex;
+  min-height: 480px;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+.sidebar {
+  width: 200px;
+  background: #e8e8e8;
+  border-right: 2px solid #999;
+  padding: 10px 8px;
+  flex-shrink: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.sidebar h2 {
+  font-size: 0.72rem;
+  font-weight: bold;
+  color: #1a3a6a;
+  text-align: center;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #aaa;
+  letter-spacing: 0.5px;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.nav-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 5px 8px;
+  background: linear-gradient(180deg, #d0d8e8 0%, #b0bcd4 100%);
+  border: 1px solid #7a8aaa;
+  border-radius: 3px;
+  color: #1a2a4a;
+  text-decoration: none;
+  font-size: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(180deg, #c0ccdf 0%, #8a9ec0 100%);
+  color: #000;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background: #f0f4fa url('logo.jpeg') center center no-repeat;
+  background-size: 320px;
+  opacity-image: 0.3;
+}
+
+.info-box {
+  color: #555;
+  font-size: 0.85rem;
+  margin-top: 20px;
 }

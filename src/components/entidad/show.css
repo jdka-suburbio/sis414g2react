@@ -1,0 +1,47 @@
+        .tabla-contenedor {
+            width: 520px;
+            margin: 18px auto 0 auto;
+            border: 2px solid #4a7fa5;
+            border-radius: 4px;
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+        .tabla-titulo {
+            background: linear-gradient(to bottom, #2a5f8f, #1a3f6f);
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 6px 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #dce9f5;
+            font-size: 13px;
+        }
+        thead tr {
+            background: linear-gradient(to bottom, #2a5f8f, #1a4a7a);
+            color: white;
+        }
+        thead th {
+            padding: 8px 10px;
+            text-align: left;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        tbody tr:nth-child(even) { background-color: #c8dff0; }
+        tbody tr:nth-child(odd)  { background-color: #dce9f5; }
+        tbody tr:hover           { background-color: #aecfe8; }
+        tbody td {
+            padding: 7px 10px;
+            color: #01161E;
+            border-bottom: 1px solid #4a7fa5;
+        }
+        .estado-carga {
+            text-align: center;
+            padding: 12px;
+            color: #2a5f8f;
+            font-style: italic;
+            font-size: 13px;
+            background-color: #dce9f5;
+        }
