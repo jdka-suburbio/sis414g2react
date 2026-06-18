@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
 import Sidebar from './components/Sidebar'
+import CreateEntidad from './components/entidad/create'; // nombre en PascalCase
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -12,7 +13,7 @@ function App() {
   return (
     <BrowserRouter basename="/sis414g2react">
       <Header />
-
+      
       <div className="app-layout">
         <Sidebar />
 
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/entidad" element={<Entidad />} />
+            <Route path="/entidad/create" element={<CreateEntidad />} />
             <Route path="/about" element={<About />} />
           </Routes>
         </main>
