@@ -5,6 +5,8 @@ import './show.css';
 function ShowEntidad() {   
     const [entidades, setEntidades] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedEntidad, setSelectedEntidad] = useState(null);
+    const [deleting, setDeleting] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -43,6 +45,47 @@ function ShowEntidad() {
         return <div>Error: {error}</div>;
     }
 
+    async function handleDelete() 
+    {
+        if (!selectedEntidad) 
+            return;
+
+        const ok = window.confirm(`Eliminar entidad ${selectedEntidad.entidad} de gestión ${selectedEntidad.gestion}?`);
+        
+        if (!ok) 
+            return;
+
+        setDeleting(true);
+        try 
+        {
+            // adjust endpoint to match your API
+        const url = `https://fuerza-g-grupo-1-9lb7.onrender.com/api/entidad/${selectedEntidad.entidad}`;
+        const res = await fetch(url, 
+        { 
+            method: 'DELETE' 
+        });
+
+        if (!res.ok) 
+        {
+            const txt = await res.text();
+            throw new Error(txt || res.statusText);
+        }
+        setEntidades(prev => prev.filter(e => !(e.entidad === selectedEntidad.entidad)));
+        setSelectedEntidad(null);
+        } 
+        catch (err) 
+        {
+            alert('Error al eliminar: ' + (err.message || err));
+        } finally 
+        {
+            setDeleting(false);
+        }
+    }
+
+    function handleRowClick(entidad) {
+        setSelectedEntidad(entidad);
+    }
+
     return (
         <div>
             <Link to="/entidad/create" class="tabla-titulo">Crear nueva entidad</Link>
@@ -54,24 +97,33 @@ function ShowEntidad() {
                         <th>Entidad</th>
                         <th>Descripcion</th>
                         <th>Sigla</th>
-                        <th>Acciones</th>
                     </tr>   
                 </thead>
                 <tbody id="tablaBody">
                     {entidades.map((entidad, i) => (
-                        <tr key={entidad.entidad + i}>
+                        <tr 
+                            key={entidad.entidad + i} onClick={() => handleRowClick(entidad)}
+                            className={selectedEntidad === entidad ? 'selected' : ''}
+                        >
                             <td data-label="Gestion">{entidad.gestion}</td>
                             <td data-label="Entidad">{entidad.entidad}</td>
                             <td data-label="Descripcion">{entidad.descripcion}</td>
                             <td data-label="Sigla">{entidad.sigla}</td>
-                            <td data-label="Acciones">
-                                <Link to={`/entidad/edit/${entidad.gestion}/${entidad.entidad}`}>Editar</Link>
-                                <button onClick={() => alert(`Eliminar entidad ${entidad.entidad} de gestion ${entidad.gestion}`)}>Eliminar</button>        
-                            </td>
                         </tr>
                     ))}
                 </tbody>        
             </table>
+
+            <div className="control-panel">
+                <button className="nav-btns">Nuevo</button>
+                <button className="nav-btns">Editar</button>
+                <button className="nav-btns" onClick={handleDelete} disabled={!selectedEntidad || deleting}>
+                {deleting ? 'Eliminando…' : 'Eliminar'}
+                </button>                
+                <button className="nav-btns btn-highlight">Seleccionar</button>
+                <button className="nav-btns">Salir</button>
+            </div>
+
         </div>
     );
 }
